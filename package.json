@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server/index.js",
+    "log": "heroku logs -a=gokopertis --tail"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/disaada/gokopertis#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "path": "^0.12.7"
   }

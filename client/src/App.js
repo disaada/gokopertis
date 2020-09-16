@@ -6,7 +6,12 @@ function App() {
 	const [data, setData] = useState()
 
 	const handleClick = () => {
-		Axios({
+		fetch('/profile')
+		.then((res) => res.json())
+		.then((participants) => {
+			console.log(participants)
+		})
+		/*Axios({
 			method: "GET",
 			url: "http://localhost:5000/",
 			headers: {
@@ -14,7 +19,7 @@ function App() {
 			}
 		}).then((response) => {
 			setData(response.data)
-		})
+		})*/
 	}
 
   return (

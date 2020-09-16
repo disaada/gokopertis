@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js && cd client && npm run build",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "log": "heroku logs -a=gokopertis --tail"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "nodemon": "^2.0.4",
     "path": "^0.12.7"
   }
 }

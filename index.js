@@ -1,20 +1,22 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const port = process.env.PORT || 5000
-
 app.use(express.static(path.join(__dirname, 'client/build')))
 
-app.get('/profile', (req, res) => {
-	const participants = '{"name": "Disa", "email": "disaada@gmail.com"}'
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
-	res.json(participants)
-})
+const cors = require('cors')
+app.use(cors())
 
-app.get('*', (req, res) => {
+const login = require('./routes/login')
+app.post('/login', login.getLogin)
+
+/*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'))
-})
+})*/
 
+const port = process.env.PORT || 5000
 app.listen(port, () => {
 	console.log(`App listening to port ${port}`)
 })

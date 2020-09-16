@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "gokopertis",
+    "password": "gokopertis",
+    "database": "gokopertis",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "gokopertis",
+    "password": "gokopertis",
+    "database": "gokopertis",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "gokopertis",
+    "password": "gokopertis",
+    "database": "gokopertis",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

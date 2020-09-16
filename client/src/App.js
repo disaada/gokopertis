@@ -1,41 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
 import './App.css';
-import Axios from 'axios'
+
+import Login from './pages/Login'
 
 function App() {
-	const [data, setData] = useState()
-
-	const handleClick = () => {
-		fetch('/profile')
-		.then((res) => res.json())
-		.then((participants) => {
-			console.log(participants)
-		})
-		/*Axios({
-			method: "GET",
-			url: "http://localhost:5000/",
-			headers: {
-				"Content-Type": "application/json"
-			}
-		}).then((response) => {
-			setData(response.data)
-		})*/
-	}
-
   return (
     <div className="App">
-    	<button type="button" onClick={handleClick} >
-    		Get Data
-    	</button>
-    	{
-    		data
-    		&&
-    		<p key={data.id}>
-    			name: {data.name}
-    			<br />
-    			email: {data.email}
-    		</p>
-    	}
+    	<BrowserRouter>
+    		<Switch>
+    			<Route exact path="/" component={Login} />
+    		</Switch>
+    	</BrowserRouter>
     </div>
   );
 }

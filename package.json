@@ -1,0 +1,24 @@
+{
+  "name": "gokopertis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/disaada/gokopertis.git"
+  },
+  "author": "Disa Ada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/disaada/gokopertis/issues"
+  },
+  "homepage": "https://github.com/disaada/gokopertis#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}

@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { getLogin } from '../services/api'
 
-function Login () {
+function Login ({login_status, login}) {
+	const history = useHistory()
 	const { register, handleSubmit } = useForm()
+	
 	const onSubmit = (data) => {
 		const { username, password } = data
 		getLogin({ username, password }).then(res => {
-			console.log(res)
+			login()
 		})
 	}
+
+	useEffect (() => {
+		console.log(login_status)
+	})
 
 	return (
 		<div>
@@ -23,4 +31,12 @@ function Login () {
 	)
 }
 
-export default Login
+const mapState = (state) => (
+	{ "login_status": state.login_status }
+)
+
+const mapDispatch = (dispatch) => (
+	{ "login": () => dispatch({ type: 'login' }) }
+)
+
+export default connect(mapState, mapDispatch)(Login)

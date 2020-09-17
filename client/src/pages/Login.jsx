@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -12,13 +12,17 @@ function Login ({login_status, login}) {
 	const onSubmit = (data) => {
 		const { username, password } = data
 		getLogin({ username, password }).then(res => {
-			login()
+			if (res.data.login_status === true) {
+				login()
+				history.push('/home')
+				console.log('login success')
+			}
+			else {
+				history.push('/')
+				console.log('login failed')
+			}
 		})
 	}
-
-	useEffect (() => {
-		console.log(login_status)
-	})
 
 	return (
 		<div>

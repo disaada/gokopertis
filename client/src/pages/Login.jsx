@@ -6,10 +6,10 @@ import { useDispatch } from 'react-redux'
 import { server } from '../services/api'
 
 function Login () {
-	const history = useHistory()
-	const { register, handleSubmit } = useForm()
-	const dispatch = useDispatch()
 	const [warning, setWarning] = useState('')
+	const { register, handleSubmit } = useForm()
+	const history = useHistory()
+	const dispatch = useDispatch()
 	
 	const onSubmit = (data) => {
 		const { username, password } = data

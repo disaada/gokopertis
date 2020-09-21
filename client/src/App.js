@@ -11,6 +11,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Logout from './pages/Logout'
 import Registration from './pages/Registration'
+import RegistrationNotice from './pages/RegistrationNotice'
 
 function App() {
     const token = useSelector((state) => state.token)
@@ -27,6 +28,7 @@ function App() {
                 <Route exact path="/" component={token === null ? Login : Home} />
         	    <Route path="/registration" component={Registration} />
                 <Route path="/logout" component={Logout} />
+                <Route path="/notice" component={RegistrationNotice} />
             </Switch>
     	</BrowserRouter>
     </div>

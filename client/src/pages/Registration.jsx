@@ -1,22 +1,31 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
 
 import { server } from '../services/api'
 
 function Registration () {
 	const { register, handleSubmit } = useForm()
+	const history = useHistory()
 
 	const onSubmit = (data) => {																																							
 		const { name, whatsapp, email, community, job, event_source } = data
 		server.postRegister({
 			name: `EVT-${name}`,
-			whatsapp: `+62${whatsapp}`,
+			whatsapp: `62${whatsapp}`,
 			email,
 			community,
 			job,
 			event_source})									
 		.then((res) => {
-			console.log(res.data)
+			if (res.status === 201) {
+				history.push('/notice')
+			} else {
+				history.push('/registration')
+			}
+		})
+		.catch((e) => {
+			console.log(e)
 		})
 	}																				
 

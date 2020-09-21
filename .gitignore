@@ -1,4 +1,7 @@
 node_modules
-db
+db/migrations
+db/seeders
+
+database.json
 Procfile
 .sequelizerc

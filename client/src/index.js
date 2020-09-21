@@ -4,18 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-
-import { LoginStore, LoginPersistor } from './states/LoginStore'
+import { loginstore, loginpersistor } from './states/loginstore'
 
 ReactDOM.render(
   <React.StrictMode>
-  	<Provider store={LoginStore}>
-  		<PersistGate loading={null} persistor={LoginPersistor}>
-    		<App />
-    	</PersistGate>
-    </Provider>
+  		<Provider store={loginstore}>
+            <PersistGate loading={null} persistor={loginpersistor}>
+            	<App />
+            </PersistGate>
+        </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -10,14 +10,14 @@ const authenticateJWT = (req, res, next) => {
 		const token = authHeader.split(' ')[1]
 		jwt.verify(token, 'secret', (err, decoded_data) => {
 			if (err) {
-				res.json({ message:'access forbidden!' })
+				res.sendStatus(403)
 			}
 
 			req.user = decoded_data
 			next()
 		})
 	} else {
-		res.json({ message: 'access denied! please login first' })
+		res.sendStatus(401)
 	}
 }
 
@@ -37,23 +37,23 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/signin', (req, res) => {
-	const { email, password } = req.body
-	Model.user.findOne({ where: { email } })
+	const { username, password } = req.body
+	Model.user.findOne({ where: { username } })
 	.then((data) => {
 		if (data && (bcrypt.compareSync(password, data.password))) {
-			const token = jwt.sign({ data }, 'secret', { expiresIn: '1h' })
+			const token = 'Bearer ' + jwt.sign({ data }, 'secret', { expiresIn: '1h' })
 
-			res.json({ data, token, message: 'signin success!' })	
+			res.json({ accessToken: token })	
 		}
-		else res.json({ message: 'invalid email or password!' })
+		else res.json({ message: 'invalid username or password!' })
 	})
 	.catch((e) => {
 		res.json(e)
 	})
 })
 
-router.get('/user', authenticateJWT, (req, res) => {
-	 res.send('user home page')
+router.get('/user/:id', authenticateJWT, (req, res) => {
+	 res.json('user home page')
 })
 
 router.put('/user/:id', (req, res) => {

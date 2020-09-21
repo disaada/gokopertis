@@ -1,29 +1,33 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import './signin.css';
 
+import Navigation from './components/Navigation'
 import Login from './pages/Login'
+import Home from './pages/Home'
 import Logout from './pages/Logout'
 import Registration from './pages/Registration'
-import Home from './pages/Home'
 
 function App() {
-	const login_status = useSelector(state => state.login_status)
-
-	useEffect(() => {
-		console.log(login_status)
-	})
+    const token = useSelector((state) => state.token)
 
   return (
     <div className="App">
-    	<BrowserRouter>
-    		<Switch>
-    			<Route exact path="/" component={ login_status ? Home : Login} />
-    			<Route path="/registration" component={Registration} />
-	    		<Route path="/logout" component={Logout} />
-    		</Switch>
+        <BrowserRouter>
+            {
+                (token !== null)
+                ? (<Navigation />)
+                : null
+            }
+            <Switch>
+                <Route exact path="/" component={token === null ? Login : Home} />
+        	    <Route path="/registration" component={Registration} />
+                <Route path="/logout" component={Logout} />
+            </Switch>
     	</BrowserRouter>
     </div>
   );

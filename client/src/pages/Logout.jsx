@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-function Logout ({logout}) {
+function Logout () {
 	const history = useHistory()
+	const dispatch = useDispatch()
 
 	useEffect (() => {
-		logout()
+		dispatch({ type: 'LOGOUT' })
 		history.push('/')
 	})
 
@@ -15,12 +16,4 @@ function Logout ({logout}) {
 	)
 }
 
-const mapState = (state) => (
-	{ "login_status": state.login_status }
-)
-
-const mapDispatch = (dispatch) => (
-	{ "logout": () => dispatch({ type: 'logout' }) }
-)
-
-export default connect(mapState, mapDispatch)(Logout)
+export default Logout

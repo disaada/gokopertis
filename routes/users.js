@@ -1,25 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const Model = require('../db/models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const authenticateJWT = (req, res, next) => {
-	const authHeader = req.headers.authorization
-	if (authHeader) {
-		const token = authHeader.split(' ')[1]
-		jwt.verify(token, 'secret', (err, decoded_data) => {
-			if (err) {
-				res.sendStatus(403)
-			}
-
-			req.user = decoded_data
-			next()
-		})
-	} else {
-		res.sendStatus(401)
-	}
-}
+const Model = require('../db/models')
+const authenticateJWT = require('../auth') 
 
 router.post('/signup', (req, res) => {
 	const data = {
@@ -45,10 +30,10 @@ router.post('/signin', (req, res) => {
 
 			res.json({ accessToken: token })	
 		}
-		else res.json({ message: 'invalid username or password!' })
+		else res.sendStatus(204)
 	})
 	.catch((e) => {
-		res.json(e)
+		res.send(e)
 	})
 })
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

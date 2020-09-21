@@ -13,6 +13,9 @@ app.use(cors())
 const users = require('./routes/users')
 app.use('/', users)
 
+const events = require('./routes/events')
+app.use('/', events)
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'))
 })

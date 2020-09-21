@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { getLogin } from '../services/api'
+import { server } from '../services/api'
 
 function Login () {
 	const history = useHistory()
 	const { register, handleSubmit } = useForm()
 	const dispatch = useDispatch()
+	const [warning, setWarning] = useState('')
 	
 	const onSubmit = (data) => {
 		const { username, password } = data
-		getLogin({ username, password }).then(res => {
+		server.getLogin({ username, password }).then(res => {
 			const token = res.data.accessToken
-			console.log(token)
 			if (res.status === 200) {
 				dispatch({ type: 'LOGIN', token: token })
 				history.push('/')
 			}
 			else {
 				history.push('/')
+				setWarning('username/password tidak valid!')
+				setTimeout(() => setWarning(''), 2000)				
 			}
+		})
+		.catch((e) => {
+			console.log(e)
 		})
 	}
 
@@ -33,6 +38,7 @@ function Login () {
 				<input className="form-control" type="password" name="password" ref={register} placeholder="Password" /> <br />
 				<button className="btn btn-lg btn-primary btn-block" type="submit"> Login </button>
 			</form>
+			{warning}
 		</div>
 	)
 }

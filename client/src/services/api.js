@@ -4,10 +4,17 @@ const axios = Axios.create({
 	baseURL: 'http://localhost:5000'
 })
 
-const getLogin = (data) => axios.post('/signin', data)
-const getUser = (token) => axios.get('/user/disa', { headers: { 'Authorization': token } })
+const server = {}
+
+// Login
+server.getLogin = (data) => axios.post('/signin', data)
+
+// User
+server.getUser = (token) => axios.get('/user/disa', { headers: { 'Authorization': token } })
+
+// Event
+server.postRegister = (data) => axios.post('/register', data)
 
 export {
-	getLogin,
-	getUser
+	server
 }

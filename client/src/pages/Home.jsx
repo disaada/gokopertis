@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { getUser } from '../services/api'
+import { server } from '../services/api'
 
 function Home () {
 	const token = useSelector((state) => state.token)
 
 	useEffect(() => {
-		getUser(token)
+		server.getUser(token)
 		.then((res) => {
 			console.log(res)
 		})

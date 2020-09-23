@@ -1,0 +1,4 @@
+{
+	"verbose": true,
+	"ignore": ["tokens", "node_modules/venom-bot"]
+}

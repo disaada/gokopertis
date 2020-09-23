@@ -29,6 +29,8 @@
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "unicodechar-string": "^1.0.0",
+    "venom-bot": "^2.0.4"
   }
 }

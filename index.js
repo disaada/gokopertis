@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const cors = require('cors')
 app.use(cors())
-
+  
 const users = require('./routes/users')
 app.use('/', users)
 

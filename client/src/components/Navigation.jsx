@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 function Navigation () {
 	const menus = [
 		['/', 'Home'],
+		['/setting', 'Peraturan Event'],
 		['/logout', 'Logout']
 	]
 

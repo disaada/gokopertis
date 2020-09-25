@@ -6,14 +6,14 @@ const authenticateJWT = (req, res, next) => {
 		const token = authHeader.split(' ')[1]
 		jwt.verify(token, 'secret', (err, decoded_data) => {
 			if (err) {
-				res.sendStatus(403)
+				res.status(403).end()
 			}
 
 			req.user = decoded_data
 			next()
 		})
 	} else {
-		res.sendStatus(401)
+		res.status(401).end()
 	}
 }
 

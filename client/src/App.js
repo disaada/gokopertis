@@ -12,6 +12,9 @@ import Home from './pages/Home'
 import Logout from './pages/Logout'
 import Registration from './pages/Registration'
 import RegistrationNotice from './pages/RegistrationNotice'
+import Audience from './pages/Audience'
+import EventSetting from './pages/EventSetting'
+import Confirm from './pages/Confirm'
 
 function App() {
     const token = useSelector((state) => state.token)
@@ -27,8 +30,11 @@ function App() {
             <Switch>
                 <Route exact path="/" component={token === null ? Login : Home} />
         	    <Route path="/registration" component={Registration} />
-                <Route path="/logout" component={Logout} />
+                <Route path="/logout" component={token === null ? Login : Logout} />
                 <Route path="/notice" component={RegistrationNotice} />
+                <Route path="/audience" component={Audience} />
+                <Route path="/setting" component={token === null ? Login : EventSetting} />
+                <Route path="/confirm" component={Confirm} />
             </Switch>
     	</BrowserRouter>
     </div>

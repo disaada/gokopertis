@@ -38,7 +38,7 @@ router.post('/signin', (req, res) => {
 })
 
 router.get('/user/:id', authenticateJWT, (req, res) => {
-	 res.json('user home page')
+	 // res.sendStatus(200)
 })
 
 router.put('/user/:id', (req, res) => {

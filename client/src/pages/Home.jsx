@@ -6,12 +6,12 @@ import { server } from '../services/api'
 function Home () {
 	const token = useSelector((state) => state.token)
 
-	useEffect(() => {
+	/*useEffect(() => {
 		server.getUser(token)
 		.then((res) => {
-			console.log(res)
+			
 		})
-	})
+	})*/
 
 	return (
 		<div>

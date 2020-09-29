@@ -1,1 +1,7 @@
 node_modules
+db/migrations
+db/seeders
+
+database.json
+Procfile
+.sequelizerc
